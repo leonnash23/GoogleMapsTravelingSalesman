@@ -15,7 +15,7 @@ type MapRequest struct {
 
 func (m *MapRequest) AddMarker(pointName string) *MapRequest {
 	m.pointNames = append(m.pointNames, pointName)
-	m.Markers = append(m.Markers, "&Markers=label:"+strconv.Itoa(len(m.Markers))+"|"+url.PathEscape(pointName))
+	m.Markers = append(m.Markers, "&markers=label:"+strconv.Itoa(len(m.Markers))+"|"+url.PathEscape(pointName))
 	return m
 }
 
