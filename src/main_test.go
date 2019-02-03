@@ -22,7 +22,7 @@ func Test_Main(t *testing.T) {
 	fmt.Println("Время в пути:")
 	fmt.Println(mapRequest.GetPathTime())
 	fmt.Println("Карта:")
-	fmt.Println(mapRequest.GetPathMapLink())
+	fmt.Println(mapRequest.GetLinkMapUrl())
 }
 
 func TestMapRequest_GetPathTime(t *testing.T) {

@@ -4,30 +4,36 @@ import (
 	"MapApi/src/domain"
 	"fmt"
 	"net/url"
+	"os"
 	"strconv"
 	"strings"
 )
 
+var apiKey string
+
+func init() {
+	apiKey = os.Getenv("GOOGLE_MAP_API_KEY")
+}
+
 const (
-	apiKey      = ""
 	distanceUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?" +
 		"origins=%s" +
 		"&destinations=%s" +
 		"&mode=walking" +
-		"&key=" + apiKey
+		"&key=%s"
 	mapUrl = "https://maps.googleapis.com/maps/api/staticmap?" +
 		"&size=1900x1080" +
 		"&scale=2" +
 		"&maptype=roadmap" +
 		"%s" +
-		"&key=" + apiKey
+		"&key=%s"
 
 	markerPart = "&markers=label:%s|%s"
 )
 
 func GetUrlWithMarkersMap(markers domain.MarkerList) string {
 	markerString := getMarkerArgues(markers)
-	return fmt.Sprintf(mapUrl, markerString)
+	return fmt.Sprintf(mapUrl, markerString, apiKey)
 }
 
 func getMarkerArgues(markers domain.MarkerList) string {
@@ -38,9 +44,9 @@ func getMarkerArgues(markers domain.MarkerList) string {
 	return markerString
 }
 
-func GetUrlWithPathMap(markers domain.MarkerList, graph []string) string {
+func GetLinkMapUrl(markers domain.MarkerList, graph []string) string {
 	markerString := getMarkerArgues(markers)
-	return fmt.Sprintf(mapUrl, markerString) + getPathArgues(markers, graph)
+	return fmt.Sprintf(mapUrl, markerString, apiKey) + getPathArgues(markers, graph)
 }
 
 func getPathArgues(markers domain.MarkerList, graph []string) string {
@@ -56,5 +62,5 @@ func getPathArgues(markers domain.MarkerList, graph []string) string {
 }
 
 func GetDistanceUrl(from string, to string) string {
-	return fmt.Sprintf(distanceUrl, url.PathEscape(from), url.PathEscape(to))
+	return fmt.Sprintf(distanceUrl, url.PathEscape(from), url.PathEscape(to), apiKey)
 }

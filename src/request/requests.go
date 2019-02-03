@@ -57,8 +57,8 @@ func (m *MapRequest) GetPathTime() string {
 	return strconv.Itoa(ans/60) + " mins"
 }
 
-func (m *MapRequest) GetPathMapLink() string {
-	return url.GetUrlWithPathMap(m.Markers, GetGraph(m.GetTimeMatrix()))
+func (m *MapRequest) GetLinkMapUrl() string {
+	return url.GetLinkMapUrl(m.Markers, GetGraph(m.GetTimeMatrix()))
 }
 
 func getTime(distances map[string]int, currentWay string) int {

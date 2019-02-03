@@ -9,7 +9,7 @@ import (
 )
 
 func MainHandler(w http.ResponseWriter, r *http.Request) {
-	t, _ := template.ParseFiles("main.html")
+	t, _ := template.ParseFiles("src/web/resources/main.html")
 	t.Execute(w, nil)
 }
 
@@ -21,7 +21,8 @@ func PathHandler(w http.ResponseWriter, r *http.Request) {
 			mapRequest.Markers.AddMarker(strings.TrimSpace(marker))
 		}
 	}
-	resp, _ := http.Get(mapRequest.GetPathMapLink())
+	link := mapRequest.GetLinkMapUrl()
+	resp, _ := http.Get(link)
 	defer resp.Body.Close()
 	io.Copy(w, resp.Body)
 }
