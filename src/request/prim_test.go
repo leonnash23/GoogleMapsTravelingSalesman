@@ -12,7 +12,7 @@ func TestGetGraph(t *testing.T) {
 func test4(t *testing.T) {
 	mapRequest := BuildMapRequest4()
 	graph := GetGraph(mapRequest.GetTimeMatrix())
-	if len(mapRequest.Markers) != len(graph)+1 {
+	if mapRequest.Markers.Count() != len(graph)+1 {
 		t.Error("Количество вершин - 1")
 	}
 	if graph[0] != "0->1" {
@@ -29,7 +29,7 @@ func test4(t *testing.T) {
 func test3(t *testing.T) {
 	mapRequest3 := BuildMapRequest3()
 	graph3 := GetGraph(mapRequest3.GetTimeMatrix())
-	if len(mapRequest3.Markers) != len(graph3)+1 {
+	if mapRequest3.Markers.Count() != len(graph3)+1 {
 		t.Error("Количество вершин - 1")
 	}
 	if graph3[0] != "0->1" {

@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title></title>
+    <script>
+        function addPoint() {
+            let elementById = document.getElementById("points");
+            elementById.innerHTML += "<label>\n" +
+                    "        Point:\n" +
+                    "        <input type=\"text\" name=\"from\">\n" +
+                    "    </label>\n"
+        }
+    </script>
+</head>
+<body>
+<form action="/path" method="post">
+    <div id="points">
+        <label>
+            Point:
+            <input type="text" name="point">
+        </label>
+        <label>
+            Point:
+            <input type="text" name="point">
+        </label>
+    </div>
+    <input type="button" onclick="addPoint()" value="+">
+    <input type="submit" value="Get">
+</form>
+</body>
+</html>

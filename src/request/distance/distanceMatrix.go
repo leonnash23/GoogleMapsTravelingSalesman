@@ -1,7 +1,7 @@
 package distance
 
 import (
-	"MapApi/util/request/url"
+	"MapApi/src/request/url"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"

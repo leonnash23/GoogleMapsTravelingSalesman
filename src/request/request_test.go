@@ -1,7 +1,7 @@
 package request
 
 import (
-	"MapApi/util/request/url"
+	"MapApi/src/request/url"
 	"testing"
 )
 
