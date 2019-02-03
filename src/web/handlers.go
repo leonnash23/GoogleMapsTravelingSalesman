@@ -2,6 +2,7 @@ package web
 
 import (
 	"MapApi/src/request"
+	"MapApi/src/web/resources"
 	"html/template"
 	"io"
 	"net/http"
@@ -9,7 +10,8 @@ import (
 )
 
 func MainHandler(w http.ResponseWriter, r *http.Request) {
-	t, _ := template.ParseFiles("src/web/resources/main.html")
+	t := template.New("main")
+	t.Parse(resources.Index)
 	t.Execute(w, nil)
 }
 

@@ -1,4 +1,6 @@
-<html>
+package resources
+
+const Index = `<html>
 <head>
     <title></title>
     <script>
@@ -33,4 +35,4 @@
     <input type="submit" value="Get">
 </form>
 </body>
-</html>
+</html>`
